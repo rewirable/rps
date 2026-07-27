@@ -1,2 +1,2 @@
 # rps
-rock paper scissors test
+rock paper scissors
