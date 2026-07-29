@@ -1,67 +1,81 @@
-let playerScore = 0
-let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
 
-const computerChoice = []
-const list = []
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
 
-let number = 0
-let number2 = 0
-let number3 = 0
+const ourDiv = document.getElementById("results");
 
+let playerChoice = null;
 
+let computerChoicee = null;
 
-while(number2<=2){
-    let re = Math.floor(Math.random() * 3) + 1
+function computerChoice(){
+    let re = Math.floor(Math.random() * 3) + 1;
     switch(re){
-        case 1:
-            computerChoice.push("ROCK")
-            break
-        case 2:
-            computerChoice.push("PAPER")
-            break
-        case 3:
-            computerChoice.push("SCISSORS")
-            break
-        default:
-            console.log("test")
-            break
-    }
-    number2++
+            case 1:
+                computerChoicee = "ROCK";
+                break;
+            case 2:
+                computerChoicee = "PAPER";
+                break;
+            case 3:
+                computerChoicee = "SCISSORS";
+                break;
+            default:
+                console.log("test");
+                break;
+        return computerChoicee;
+    };
 }
 
+let rounds = 0;
 
-console.log("player choice: " + list)
-console.log("computer choices " + computerChoice)
+rock.onclick = function(){
+    PlayRound("ROCK")
+    rounds++
+};
 
-while(number<=2){
-    if(list[number]===computerChoice[number3]){
-        console.log("Tie!")
-    } else if(list[number]==="ROCK" && computerChoice[number3]==="PAPER"){
-        console.log("You Lost!")
-        computerScore++
-    } else if(list[number]==="PAPER" && computerChoice[number3]==="ROCK"){
-        console.log("You Win!")
-        playerScore++
+scissors.onclick = function(){
+    PlayRound("SCISSORS")
+    rounds++
+};
 
-    } else if(list[number]==="PAPER" && computerChoice[number3]==="SCISSORS"){
-        console.log("You Lost!")
-        computerScore++
-    } else if(list[number]==="ROCK" && computerChoice[number3]==="SCISSORS"){
-        console.log("You Win!")
-        playerScore++
+paper.onclick = function(){
+    PlayRound("PAPER")
+    rounds++
+};
 
-    } else if(list[number]==="SCISSORS" && computerChoice[number3]==="ROCK"){
-        console.log("You Lost!")
-        computerScore++
-    } else if(list[number]==="SCISSORS" && computerChoice[number3]==="PAPER"){
-        console.log("You Win!")
-        playerScore++
+
+
+async function PlayRound(option){
+    computerChoice()
+    if(option===computerChoicee){
+        console.log("Tie!");
+    } else if(option==="ROCK" && computerChoicee==="PAPER"){
+        console.log("You Lost!");
+        computerScore++;
+    } else if(option==="PAPER" && computerChoicee==="ROCK"){
+        console.log("You Win!");
+        playerScore++;
+    } else if(option==="PAPER" && computerChoicee==="SCISSORS"){
+        console.log("You Lost!");
+        computerScore++;
+    } else if(option==="ROCK" && computerChoicee==="SCISSORS"){
+        console.log("You Win!");
+        playerScore++;
+    } else if(option==="SCISSORS" && computerChoicee==="ROCK"){
+        console.log("You Lost!");
+        computerScore++;
+    } else if(option==="SCISSORS" && computerChoicee==="PAPER"){
+        console.log("You Win!");
+        playerScore++;
+    } else {
+        console.log("bug")
     }
 
-    number++
-    number3++
-    
+    if(rounds>=4){
+        ourDiv.innerHTML = `<center><br><h1> ${playerScore} : ${computerScore}</h1></center>`
+    }
 }
-
-console.log(playerScore)
-console.log(computerScore)
