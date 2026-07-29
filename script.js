@@ -9,12 +9,6 @@ let number2 = 0
 let number3 = 0
 
 
-for(let i = 0; i <= 2; i++){
-    let input = prompt("rock paper scissors")
-    const result = input.toUpperCase()
-
-    list.push(result)
-}
 
 while(number2<=2){
     let re = Math.floor(Math.random() * 3) + 1
